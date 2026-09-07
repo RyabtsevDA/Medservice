@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МЕДСЕРВИС — Внешнее бизнес-управление для частных клиник</title>
+    
+    <!-- Стили и Шрифты -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            base: '#08090A',
+                            surface: '#111214',
+                            accent: '#C5A059', // Премиальный золотисто-песочный (не «дешевое золото»)
+                            muted: '#8E9196',
+                            border: '#25272B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #08090A; color: #FFFFFF; }
+        .text-gradient { background: linear-gradient(135deg, #FFF 0%, #8E9196 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-glass { background: rgba(17, 18, 20, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid #25272B; }
+        .func-tab.active { color: #C5A059; border-bottom: 2px solid #C5A059; }
+        .premium-shadow { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .cta-glow:hover { box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-[100] bg-glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <div class="w-8 h-8 bg-brand-accent flex items-center justify-center rounded-sm rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                    <div class="-rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                        <i data-lucide="activity" class="text-brand-base w-5 h-5"></i>
+                    </div>
+                </div>
+                <span class="text-xl font-bold tracking-tighter uppercase ml-2">Медсервис</span>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-muted">
+                <a href="#about" class="hover:text-brand-accent transition-colors">Концепция</a>
+                <a href="#system" class="hover:text-brand-accent transition-colors">Система</a>
+                <a href="#functions" class="hover:text-brand-accent transition-colors">Управление</a>
+                <a href="#kpi" class="hover:text-brand-accent transition-colors">Результат</a>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="tel:+" class="hidden sm:block text-sm font-medium">8 800 250 40 50</a>
+                <a href="#audit" class="bg-brand-accent text-brand-base px-6 py-3 rounded-none text-xs font-extrabold uppercase tracking-widest cta-glow transition-all">
+                    Аудит клиники
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Фон с шумом и градиентом -->
+        <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+        <div class="absolute top-1/4 -right-20 w-96 h-96 bg-brand-accent/10 blur-[120px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="1000">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="h-[1px] w-12 bg-brand-accent"></span>
+                    <span class="text-brand-accent text-xs font-bold uppercase tracking-[0.4em]">Medical Management Group</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold leading-[0.95] tracking-tighter mb-10 text-gradient">
+                    Оставьте себе медицину. <br/>
+                    <span class="font-serif italic font-light">Бизнес доверьте нам.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-brand-muted mb-12 leading-relaxed max-w-2xl">
+                    Управляющая компания «Медсервис» забирает операционный контур частных клиник: от маркетинга до финансов. Вы снова становитесь врачом и собственником, а не операционным директором.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#audit" class="group bg-brand-accent text-brand-base px-10 py-6 text-sm font-black uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-white transition-all">
+                        Записаться на аудит
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
+                    <button class="px-10 py-6 border border-brand-border text-sm font-black uppercase tracking-widest hover:bg-white hover:text-brand-base transition-all">
+                        Скачать модель управления
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Mockup (Floating) -->
+        <div class="absolute bottom-10 right-10 hidden xl:block w-[500px] p-4 bg-brand-surface border border-brand-border premium-shadow" data-aos="fade-left" data-aos-delay="400">
+            <div class="flex items-center justify-between mb-6 border-b border-brand-border pb-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-brand-muted">Live Efficiency Report</span>
+                <div class="flex gap-1">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="h-2 w-full bg-brand-border rounded-full overflow-hidden">
+                    <div class="h-full bg-brand-accent w-[78%]"></div>
+                </div>
+                <div class="flex justify-between text-[10px] font-bold uppercase">
+                    <span class="text-brand-muted">Загрузка врачей</span>
+                    <span>78.4% <i data-lucide="trending-up" class="inline w-3 h-3 text-green-500 ml-1"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE PROBLEM (EMPATHY) -->
+    <section id="about" class="py-32 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800" alt="Sover" class="grayscale hover:grayscale-0 transition-all duration-700 opacity-60">
+                    <div class="absolute -bottom-10 -right-10 bg-brand-accent p-12 hidden md:block">
+                        <i data-lucide="quote" class="text-brand-base w-12 h-12 mb-4"></i>
+                        <p class="text-brand-base font-serif italic text-xl leading-snug">
+                            "Вы не обязаны быть менеджером только потому, что создали клинику."
+                        </p>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+                        Врач перестает заниматься медициной, когда его бизнес начинает расти.
+                    </h2>
+                    <p class="text-brand-muted text-lg mb-10 leading-relaxed">
+                        Ваше время стоит дорого. Но вместо сложных клинических случаев вы тратите его на разборки с администраторами, контроль подрядчиков по рекламе и попытки свести управленческий баланс.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 border border-brand-border flex items-center justify-center text-brand-accent font-bold">01</div>
+                            <p class="text-brand-muted"><b class="text-white block mb-1">Фокус размыт.</b> Энергия уходит на рутину, а не на стратегию и пациентов.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 border border-brand-border flex items-center justify-center text-brand-accent font-bold">02</div>
+                            <p class="text-brand-muted"><b class="text-white block mb-1">Процессы случайны.</b> Рост клиники зависит от вашего личного участия, а не от системы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SYSTEMATIC SOLUTION (TABS) -->
+    <section id="system" class="py-32 bg-brand-base overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-7xl font-bold mb-8 italic font-serif" data-aos="fade-up">Новая архитектура управления</h2>
+                <p class="text-brand-muted text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Мы внедряем управленческий контур, который работает автономно, сохраняя за вами право финального решения.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Карта 1 -->
+                <div class="p-10 border border-brand-border hover:border-brand-accent/50 transition-all group" data-aos="zoom-in">
+                    <div class="w-14 h-14 border border-brand-accent flex items-center justify-center mb-10 group-hover:bg-brand-accent transition-all duration-500">
+                        <i data-lucide="shield-check" class="text-brand-accent group-hover:text-brand-base w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Безопасность</h3>
+                    <p class="text-brand-muted leading-relaxed">Собственник сохраняет 100% юридического и стратегического контроля. Мы — ваши наемные руки и интеллект.</p>
+                </div>
+                <!-- Карта 2 -->
+                <div class="p-10 border border-brand-border hover:border-brand-accent/50 transition-all group" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-14 h-14 border border-brand-accent flex items-center justify-center mb-10 group-hover:bg-brand-accent transition-all duration-500">
+                        <i data-lucide="layers" class="text-brand-accent group-hover:text-brand-base w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Системность</h3>
+                    <p class="text-brand-muted leading-relaxed">Функции маркетинга, продаж и HR работают как единый механизм, а не как разрозненные отделы.</p>
+                </div>
+                <!-- Карта 3 -->
+                <div class="p-10 border border-brand-border hover:border-brand-accent/50 transition-all group" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-14 h-14 border border-brand-accent flex items-center justify-center mb-10 group-hover:bg-brand-accent transition-all duration-500">
+                        <i data-lucide="bar-chart-big" class="text-brand-accent group-hover:text-brand-base w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Результат</h3>
+                    <p class="text-brand-muted leading-relaxed">Наша мотивация привязана к росту чистой прибыли и эффективности клиники. Мы в одной лодке.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: KPI DASHBOARD -->
+    <section id="kpi" class="py-32 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center text-xs font-bold uppercase tracking-[0.5em] text-brand-accent mb-20">Целевые показатели эффективности</h2>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-brand-border border border-brand-border">
+                <div class="bg-brand-base p-16 text-center group transition-colors hover:bg-brand-surface">
+                    <div class="text-brand-muted text-[10px] font-bold uppercase tracking-widest mb-4">Выручка</div>
+                    <div class="text-6xl font-bold mb-4 tracking-tighter text-gradient group-hover:scale-110 transition-transform">+XX%</div>
+                    <div class="text-[10px] text-brand-muted uppercase tracking-tighter italic">Индивидуальный прогноз</div>
+                </div>
+                <div class="bg-brand-base p-16 text-center group transition-colors hover:bg-brand-surface">
+                    <div class="text-brand-muted text-[10px] font-bold uppercase tracking-widest mb-4">Конверсия</div>
+                    <div class="text-6xl font-bold mb-4 tracking-tighter text-gradient group-hover:scale-110 transition-transform">+XX%</div>
+                    <div class="text-[10px] text-brand-muted uppercase tracking-tighter italic">Запись из обращения</div>
+                </div>
+                <div class="bg-brand-base p-16 text-center group transition-colors hover:bg-brand-surface">
+                    <div class="text-brand-muted text-[10px] font-bold uppercase tracking-widest mb-4">LTV</div>
+                    <div class="text-6xl font-bold mb-4 tracking-tighter text-gradient group-hover:scale-110 transition-transform">+XX%</div>
+                    <div class="text-[10px] text-brand-muted uppercase tracking-tighter italic">Возврат пациентов</div>
+                </div>
+                <div class="bg-brand-base p-16 text-center group transition-colors hover:bg-brand-surface">
+                    <div class="text-brand-muted text-[10px] font-bold uppercase tracking-widest mb-4">Прибыль</div>
+                    <div class="text-6xl font-bold mb-4 tracking-tighter text-gradient group-hover:scale-110 transition-transform">+XX%</div>
+                    <div class="text-[10px] text-brand-muted uppercase tracking-tighter italic">Чистая маржинальность</div>
+                </div>
+            </div>
+            <p class="mt-12 text-center text-brand-muted text-xs uppercase tracking-widest opacity-50">Данные на основе 48 аудитов клиник в 2023-2024 гг.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FINAL FORM (CONVERSION POINT) -->
+    <section id="audit" class="py-40 bg-brand-base relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="bg-brand-surface border border-brand-border p-12 md:p-20 shadow-2xl" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 text-center italic font-serif">Запишитесь на аудит</h2>
+                <p class="text-brand-muted text-center mb-16 text-lg">
+                    За 60 минут мы проанализируем ваш «бизнес-скелет» и покажем, где клиника теряет до 40% прибыли ежемесячно.
+                </p>
+
+                <form class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-brand-muted">Имя собственника</label>
+                            <input type="text" class="w-full bg-transparent border-b border-brand-border py-4 outline-none focus:border-brand-accent transition-colors text-xl">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-brand-muted">Контактный телефон</label>
+                            <input type="tel" class="w-full bg-transparent border-b border-brand-border py-4 outline-none focus:border-brand-accent transition-colors text-xl">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-brand-muted">Название клиники и город</label>
+                        <input type="text" class="w-full bg-transparent border-b border-brand-border py-4 outline-none focus:border-brand-accent transition-colors text-xl">
+                    </div>
+                    <button class="w-full bg-brand-accent text-brand-base py-8 text-sm font-black uppercase tracking-[0.3em] hover:bg-white transition-all cta-glow">
+                        Получить экспресс-аудит
+                    </button>
+                    <p class="text-[10px] text-center text-brand-muted uppercase tracking-widest">
+                        Гарантируем конфиденциальность данных и отсутствие спама.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 bg-brand-base border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-2 grayscale">
+                <div class="w-6 h-6 bg-white flex items-center justify-center rounded-sm rotate-45"></div>
+                <span class="text-lg font-bold tracking-tighter uppercase ml-2">Медсервис</span>
+            </div>
+            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-widest text-brand-muted">
+                <a href="#" class="hover:text-white transition-colors">Политика</a>
+                <a href="#" class="hover:text-white transition-colors">Условия</a>
+                <span>© 2024 Medservice. Management Group.</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="w-10 h-10 border border-brand-border flex items-center justify-center hover:border-brand-accent transition-colors">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </a>
+                <a href="#" class="w-10 h-10 border border-brand-border flex items-center justify-center hover:border-brand-accent transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({
+            once: true,
+            offset: 100
+        });
+
+        // Плавный скролл
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
